@@ -1,0 +1,5 @@
+Chorely is a web application to make the division, planning, tracking, and reporting of chores easy.
+
+Features:
+* Chore CRUD ("/chore" resources)
+* Person CRUD ("/person" resources)

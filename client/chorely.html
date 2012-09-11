@@ -1,0 +1,69 @@
+<head>
+  <title>chorely</title>
+</head>
+
+<body>
+  {{> layout}}
+</body>
+
+<template name="layout">
+  <div id="side-pane">
+    {{> entitylist}}
+  </div>
+  <div id="main-pane">
+    {{> entitydetails}}
+  </div>
+</template>
+
+<template name="entitylist">
+  <h3>{{focus_entity}} list</h3>
+  <div id="entities">
+    {{#each entities}}
+      <div class="destroy"></div>
+      <div class="entityList {{selected}}">
+        {{#if editing}}
+          <div class="edit">
+            <input class="entity-name-input" id="entity-name-input" type="text" value="{{name}}" />
+          </div>
+        {{else}}
+          <div class="display">
+            <a class="list-entity {{name_class}}" href="/{{_id}}">
+              {{name}}
+            </a>
+          </div>
+        {{/if}}
+      </div>
+    {{/each}}
+  </div>
+  <div id="createEntity">
+    <input type="text" id="new-entity" placeholder="New Entity" />
+  </div>
+</template>
+
+<template name="entitydetails">
+  <div id="entityDetails">
+    {{#with entity}}
+      <h3>{{name}}</h3>
+      {{#if chore}}
+        <div class="desc">
+          Description:
+          <textarea class="chore-description-input" id="description">{{description}}</textarea>
+        </div>
+        <div class="hours">
+          Hours:
+          <input class="chore-hours-input" id="hours" type="text" value="{{hours}}" />
+        </div>
+        <div class="freq">
+          Frequency:
+          <input class="chore-freq-input" id="frequency" type="text" value="{{frequency}}" />
+        </div>
+      {{/if}}
+      {{#if person}}
+        <div class="email">
+          Email:
+          <input class="person-email-input" id="email" type="text" value="{{email}}" />
+        </div>
+      {{/if}}
+    {{/with}}
+  </div>
+</template>

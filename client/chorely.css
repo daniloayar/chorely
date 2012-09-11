@@ -1,0 +1,108 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.5;
+  background: #eeeeee;
+  color: #333333;
+}
+
+body, input, textarea {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+input, textarea {
+  font-size: 100%;
+}
+
+a, a:visited, a:active {
+  color: #258;
+}
+
+h3 {
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: 120%;
+  padding: 8px 6px;
+  text-align: center;
+}
+
+#main-pane, #side-pane, #bottom-pane {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+#main-pane {
+  top: 45px;
+  bottom: 0;
+  left: 220px;
+  overflow: auto;
+}
+
+#side-pane {
+  width: 200px;
+  right: auto;
+  overflow: auto;
+  background: #eee;
+  border-right: 1px solid #999;
+  background: #ddd;
+}
+
+#entities {
+  padding: 3px 6px;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid #ccc;
+}
+
+#entities .selected {
+  background: #9be;
+  font-weight: bold;
+}
+
+#entities .entityList {
+  margin-left: 30px;
+}
+
+#entities .destroy {
+  cursor: pointer;
+  position: absolute;
+  height: 20px;
+  width: 20px;
+}
+
+#entities:hover .destroy {
+  background: url('/destroy.png') no-repeat 0 0;
+}
+
+#entities .destroy:hover {
+  background-position: 0 -20px;
+}
+
+#createEntity {
+  padding: 3px 6px;
+  margin-top: 5px;
+}
+
+#createEntity input {
+  width: 180px;
+}
+
+#entityDetails .desc {
+  width: 500px;
+}
+#entityDetails .chore-description-input {
+  width: 80%;
+}
