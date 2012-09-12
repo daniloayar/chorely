@@ -8,7 +8,7 @@ Session.set('focus_entity', null);
 
 Template.entitylist.focus_entity = function() {
   return Session.get('focus_entity');
-}
+};
 Template.entitylist.entities = function () {
   return activeModel().find();
 };
@@ -40,7 +40,7 @@ Template.entitylist.events({
   },
   'click .destroy': function () {
     activeModel().remove(this._id);
-  },
+  }
 });
 Template.entitylist.events(okCancelEvents('#new-entity',
   {
@@ -69,10 +69,10 @@ Template.entitylist.events(okCancelEvents('#entity-name-input',
 // template conditionals {{#if blah}}
 Template.entitydetails.chore = function() {
   return Session.equals('focus_entity', 'chore');
-}
+};
 Template.entitydetails.person = function() {
   return Session.equals('focus_entity', 'person');
-}
+};
 
 Template.entitydetails.entity = function () {
   if (Session.get('entity_id')) {
