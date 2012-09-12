@@ -3,3 +3,4 @@ Chorely is a web application to make the division, planning, tracking, and repor
 Features:
 * Chore CRUD ("/chore" resources)
 * Person CRUD ("/person" resources)
+* Basci assignment of a person to a chore

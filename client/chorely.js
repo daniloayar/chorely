@@ -29,6 +29,10 @@ Template.entitylist.events({
     // prevent clicks on <a> from refreshing the page.
     evt.preventDefault();
   },
+  'click #personNav,#choreNav': function (evt) {
+    Session.set('focus_entity', evt.target.innerText);
+    Router.setEntity();
+  },
   'dblclick .entityList': function (evt, tmpl) { // start editing list name
     Session.set('editing_entity_name', this._id);
     Meteor.flush(); // force DOM redraw, so we can focus the edit field
@@ -72,7 +76,21 @@ Template.entitydetails.person = function() {
 
 Template.entitydetails.entity = function () {
   if (Session.get('entity_id')) {
-    return activeModel().findOne({_id: Session.get('entity_id')});
+    var persons = [];
+    var entity = activeModel().findOne({_id: Session.get('entity_id')});
+    if (entity) {
+      if ('chore' === Session.get('focus_entity')) {
+        // add the person info to returned doc
+        Person.find().forEach(function (person) {
+          if (entity.assigned && person._id === entity.assigned) {
+            person.selected = true;
+          }
+          persons.push(person);
+        });
+      }
+      entity.persons = persons;
+      return entity;
+    }
   }
 };
 Template.entitydetails.events({
@@ -86,3 +104,4 @@ Template.entitydetails.events(okCancelEvents('#description', genericUpdate));
 Template.entitydetails.events(okCancelEvents('#hours', genericUpdate));
 Template.entitydetails.events(okCancelEvents('#frequency', genericUpdate));
 Template.entitydetails.events(okCancelEvents('#email', genericUpdate));
+Template.entitydetails.events(okCancelEvents('#assigned', genericUpdate));

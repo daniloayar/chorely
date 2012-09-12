@@ -15,6 +15,8 @@ var ChorelyRouter = Backbone.Router.extend({
     Session.set("entity_id", person_id);
   },
   setEntity: function (entity_id) {
+    if (!entity_id)
+      entity_id = '';
     this.navigate(Session.get("focus_entity") + "/" + entity_id, true);
   }
 });

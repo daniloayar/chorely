@@ -16,7 +16,8 @@
 </template>
 
 <template name="entitylist">
-  <h3>{{focus_entity}} list</h3>
+  <div id="choreNav">chore</div>
+  <div id="personNav">person</div>
   <div id="entities">
     {{#each entities}}
       <div class="destroy"></div>
@@ -56,6 +57,15 @@
         <div class="freq">
           Frequency:
           <input class="chore-freq-input" id="frequency" type="text" value="{{frequency}}" />
+        </div>
+        <div class="assigned">
+          Assigned To:
+          <select class="chore-assign-select" id="assigned">
+            <option>-- vacant --</option>
+            {{#each persons}}
+              <option value="{{_id}}" {{#if selected}}selected="{{selected}}"{{/if}}>{{name}}</option>
+            {{/each}}
+          </select>
         </div>
       {{/if}}
       {{#if person}}
